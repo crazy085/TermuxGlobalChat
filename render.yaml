@@ -1,23 +1,10 @@
 services:
   - type: web
-    name: TermuxGlobalChat-Server
+    name: TermuxGlobalChat
     env: node
-    rootDir: server
-    buildCommand: "npm install"
-    startCommand: "node index-prod.js"
-    autoDeploy: true
-    envVars:
-      - key: PORT
-        value: 10000
-
-staticSites:
-  - name: TermuxGlobalChat-Client
-    root: client
     buildCommand: "npm install && npm run build"
-    staticPublishPath: "dist"
+    startCommand: "npm run start"
     autoDeploy: true
     envVars:
-      - key: VITE_API_BASE
-        value: https://termuxglobalchat-server.onrender.com
-      - key: VITE_WS_BASE
-        value: wss://termuxglobalchat-server.onrender.com
+      - key: NODE_ENV
+        value: production
